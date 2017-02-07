@@ -4,10 +4,15 @@
 
 - name: "Install PHP5 and Apache2"
   apt:
-    name: php5 sqlite3 php5-sqlite php5-mysql
+    name: "{{ item }}"
     state: present
     update_cache: yes
   become: yes
+  with_items:
+    - php5
+    - sqlite3
+    - php5-sqlite
+    - php5-mysql
   become_user: root
 
 - name: "Ubuntu user is the owner of /var/www/html"
