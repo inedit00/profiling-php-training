@@ -51,7 +51,7 @@ The [Blackfire](https://blackfire.io) stack is made of these components:
 
 ## Deployment of this repository
 If you want to deploy the content of this repository to an EC2 instance follow these simple steps.
-Go to the AWS Console and start a new EC2 micro instance. Choose the default VPC. To be able to later access the machine, create a new pair of SSH keys or choose an already existing pair. Wait for it to be available.
+Go to the AWS Console and start a new EC2 micro instance with Ubuntu 16.04 AMI. Choose the default VPC. To be able to later access the machine, create a new pair of SSH keys or choose an already existing pair. Wait for it to be available.
 
 While this happens, install on your Vagrant [Ansible](https://docs.ansible.com/ansible/) with the [Ansistrano](https://github.com/ansistrano/deploy) and [Blackfire](https://galaxy.ansible.com/detail#/role/3201) roles
 
@@ -66,6 +66,14 @@ Try sshing into the machine selecting your pem key. Choose the key that you sele
 
 ```bash
 $ ssh -i $HOME/.ssh/personal.pem ubuntu@52.123.456.78
+```
+
+Once in the host, execute the following commands:
+
+```bash
+sudo su -
+apt-get update
+apt-get install language-pack-es python -y
 ```
 
 Edit the `deploy.yml` and `rollback` files, mainly `blackfire_server_id` and `blackfire_server_token`. You can find these values in your [Blackfire profile page](https://blackfire.io/account).
