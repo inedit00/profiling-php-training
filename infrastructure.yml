@@ -9,10 +9,12 @@
     update_cache: yes
   become: yes
   with_items:
-    - php5
-    - sqlite3
-    - php5-sqlite
-    - php5-mysql
+    - php7.0
+    - php7.0-mysql
+    - php7.0-sqlite3
+    - libapache2-mod-php7.0
+    - apache2
+    - composer
   become_user: root
 
 - name: "Ubuntu user is the owner of /var/www/html"
